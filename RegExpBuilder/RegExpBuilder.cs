@@ -109,6 +109,39 @@ namespace Builder
             return this;
         }
 
+        public RegExpBuilder Or() {
+            //OrLike(new RegExpBuilder().Exactly(1).Of(searchString).ToRegExp());
+            _state.Or = true;
+            return this;
+        }
+
+        public RegExpBuilder OrLike(Regex RegExpression) {
+            var literal = _expression.Last();
+            _expression.Remove(_expression.Last());
+
+            //literal = StripParenthesis(literal);
+
+            _expression.Add(AddParenthesis(literal + "|(?:" + RegExpression.ToString() + ")"));
+            
+
+            return this;
+            //lastOr = lastOr.substring(0, lastOr.length - 1);
+            //self._literal[self._literal.length - 1] = lastOr;
+            //self._literal.push("|(?:" + or + "))");
+        }
+
+        private string StripParenthesis(string literal)
+        {
+            return literal.Trim('(', ')');
+        }
+
+        private string AddParenthesis(string literal) {
+            if(literal.Length > 0)
+                return "(" + literal + ")";
+
+            return literal;
+        }
+
         private string GetQuantityLiteral()
         {
             int min = _state.MinimumOf;
@@ -162,7 +195,20 @@ namespace Builder
         private void Add(string _literal)
         {
             _literal = AddFilters(_literal);
+            _literal = HandleConditions(_literal);
+            _literal = AddParenthesis(_literal);
             _expression.Add(_literal);
+        }
+
+        private string HandleConditions(string _literal)
+        {
+            if (_state.Or) {
+                this.OrLike(new Regex(_literal));
+                _literal = "";
+                _state.Or = false;
+            }
+
+            return _literal;
         }
 
         public RegExpBuilder MaximumOf(int maximumOccurences)

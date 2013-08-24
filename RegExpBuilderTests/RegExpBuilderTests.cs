@@ -199,5 +199,25 @@ namespace RegExpBuilderTests
             Assert.IsFalse(r.Match("aaaa").Success, "four Letters");
             Assert.IsFalse(r.Match("aa").Success, "two Letters");
         }
+
+        [TestMethod]
+        public void Or()
+        {
+
+            var builder = new Builder.RegExpBuilder();
+            var r = builder
+                .StartOfLine()
+                .Exactly(1)
+                .Of("a")
+                .Or()
+                .Exactly(1).Of("b")
+                .EndOfLine()
+                .ToRegExp();
+
+            Assert.IsTrue(r.Match("a").Success, "a");
+            Assert.IsTrue(r.Match("b").Success, "b");
+            Assert.IsFalse(r.Match("ab").Success, "two Letters");
+            Assert.IsFalse(r.Match("aa").Success, "two Letters");
+        }
     }
 }

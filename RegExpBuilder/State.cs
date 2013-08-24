@@ -71,5 +71,7 @@ namespace RegExpBuilder
 
 
         public RegexOptions Options { get; set; }
+
+        public bool Or { get; set; }
     }
 }
