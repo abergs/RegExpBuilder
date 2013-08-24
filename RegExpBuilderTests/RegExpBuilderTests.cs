@@ -216,6 +216,7 @@ namespace RegExpBuilderTests
 
             Assert.IsTrue(r.Match("a").Success, "a");
             Assert.IsTrue(r.Match("b").Success, "b");
+
             Assert.IsFalse(r.Match("ab").Success, "two Letters");
             Assert.IsFalse(r.Match("aa").Success, "two Letters");
         }
