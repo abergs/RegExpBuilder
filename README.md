@@ -36,4 +36,4 @@ A linq extensions style of building RegExpPatterns in .NET.
         }
 
 There is alot more examples in the test files!
-/RegExpBuilderTests/RegExpBuilderTests.cs
+https://github.com/abergs/RegExpBuilder/RegExpBuilderTests/RegExpBuilderTests.cs
