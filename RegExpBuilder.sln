@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20617.1 PREVIEW
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegExpBuilder", "RegExpBuilder\RegExpBuilder.csproj", "{011BAD95-8D8E-4A9D-B797-D1A2D142FF48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegExpBuilderTests", "RegExpBuilderTests\RegExpBuilderTests.csproj", "{4DD1887B-FEB4-4543-997F-E10776A5B3DD}"

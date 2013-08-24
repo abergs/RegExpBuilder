@@ -5,8 +5,28 @@ A library for building RegExpPatterns
 ## What is it?
 A linq extensions style of building RegExpPatterns in .NET.
 
-#How to use it
+## Example
+Good code is simple.
+Which of these code snippets is easiest to understand?
+`var regEx = {(?:^)[A-Za-z]([A-Za-z]+|(?:\d+))(@{1,1})[A-Za-z]+(.{1,1})[A-Za-z]+(?:$)}`
 
+*or*
+
+	var builder = new Builder.RegExpBuilder();
+    var r = builder
+		.StartOfInput()
+        .Letter() // Must start with letter a-z
+		.Letters() // any number of letters
+        .Or() 
+        .Digits() // any number of numbers
+		.Exactly(1).Of("@")
+		.Letters() // domain
+		.Exactly(1).Of(".")
+        .Letters() // top-level domain
+        .EndOfInput()
+        .ToRegExp();
+
+#How to use it
 
 ### Of("Github").Or().Of("BitBucket")		
             var builder = new Builder.RegExpBuilder();
