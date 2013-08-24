@@ -17,13 +17,14 @@ namespace RegExpBuilderTests
 
             var builder = new Builder.RegExpBuilder();
             var r = builder.Digit().ToRegExp();
-            
+
             Assert.IsTrue(r.Match("1").Success);
             Assert.IsFalse(r.Match("a").Success);
         }
 
         [TestMethod]
-        public void IsDigit() {
+        public void IsDigit()
+        {
 
             var builder = new Builder.RegExpBuilder();
             var r = builder.Digit().ToRegExp();
@@ -110,9 +111,9 @@ namespace RegExpBuilderTests
                 .EndOfLine()
                 .ToRegExp();
 
-            Assert.IsTrue(r.Match("").Success,"None");
-            Assert.IsTrue(r.Match("a").Success,"One");
-            Assert.IsFalse(r.Match("aa").Success,"Multiple");
+            Assert.IsTrue(r.Match("").Success, "None");
+            Assert.IsTrue(r.Match("a").Success, "One");
+            Assert.IsFalse(r.Match("aa").Success, "Multiple");
         }
 
         [TestMethod]
@@ -206,20 +207,23 @@ namespace RegExpBuilderTests
 
             var builder = new Builder.RegExpBuilder();
             var r = builder
-                .StartOfLine()
-                .Exactly(1)
-                .Of("a")
-                .Or()
-                .Exactly(1).Of("b")
-                .EndOfLine()
-                .ToRegExp();
+            .StartOfLine()
+            .Exactly(1).Of("github")
+            .Or()
+            .Exactly(1).Of("bitbucket")
+            .EndOfLine()
+            .ToRegExp();
 
-            Assert.IsTrue(r.Match("a").Success, "a");
-            Assert.IsTrue(r.Match("b").Success, "b");
+            string regex = r.ToString();
 
-            Assert.IsFalse(r.Match("ab").Success, "two Letters");
-            Assert.IsFalse(r.Match("aa").Success, "two Letters");
+            Assert.IsTrue(r.Match("github").Success, "Found one Github");
+            Assert.IsTrue(r.Match("bitbucket").Success, "Found one Bitbucket");
+
+            Assert.IsFalse(r.Match("githubgithub").Success, "Oops, Found too Many Github");
+            Assert.IsFalse(r.Match("bitbucketbitbucket").Success, "Oops, Found too Many Github");
         }
+
+
 
         [TestMethod]
         public void MultipleOr()

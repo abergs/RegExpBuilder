@@ -17,6 +17,8 @@ A linq extensions style of building RegExpPatterns in .NET.
                 .Exactly(1).Of("bitbucket")
                 .EndOfLine()
                 .ToRegExp();
+			
+			// r.ToString() == "(?:^)(github{1,1}|(?:bitbucket{1,1}))(?:$)"
 
             Assert.IsTrue(r.Match("github").Success, "Found one Github");
             Assert.IsTrue(r.Match("bitbucket").Success, "Found one Bitbucket");
