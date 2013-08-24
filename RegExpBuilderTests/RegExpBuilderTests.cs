@@ -223,8 +223,6 @@ namespace RegExpBuilderTests
             Assert.IsFalse(r.Match("bitbucketbitbucket").Success, "Oops, Found too Many Github");
         }
 
-
-
         [TestMethod]
         public void MultipleOr()
         {
@@ -247,6 +245,31 @@ namespace RegExpBuilderTests
 
             Assert.IsFalse(r.Match("ab").Success, "two Letters");
             Assert.IsFalse(r.Match("aa").Success, "two Letters");
+        }
+
+        [TestMethod]
+        public void ValidateEmailExample()
+        {
+            // you should never validate emaildresses using regex, but here is one way:
+            // This filter will not allow gmail-like, "+ syntax",  tagging: "info+skipinbox@example.com"
+            var builder = new Builder.RegExpBuilder();
+            var r = builder
+                .StartOfInput()
+                .Letter() // Must start with letter a-z
+                .Letters() // any number of letters
+                .Or() 
+                .Digits() // any number of numbers
+                .Exactly(1).Of("@") 
+                .Letters() // domain
+                .Exactly(1).Of(".")
+                .Letters() // top-level domain
+                .EndOfInput()
+                .ToRegExp();
+
+            Assert.IsTrue(r.Match("anders@andersaberg.com").Success);
+            Assert.IsTrue(r.Match("a1@a.com").Success);
+            
+            Assert.IsFalse(r.Match("1a@a.com").Success, "two Letters");
         }
     }
 }
