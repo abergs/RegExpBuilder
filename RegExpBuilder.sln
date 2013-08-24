@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegExpBuilder", "RegExpBuilder\RegExpBuilder.csproj", "{011BAD95-8D8E-4A9D-B797-D1A2D142FF48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegExpBuilderTests", "RegExpBuilderTests\RegExpBuilderTests.csproj", "{4DD1887B-FEB4-4543-997F-E10776A5B3DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{011BAD95-8D8E-4A9D-B797-D1A2D142FF48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011BAD95-8D8E-4A9D-B797-D1A2D142FF48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011BAD95-8D8E-4A9D-B797-D1A2D142FF48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011BAD95-8D8E-4A9D-B797-D1A2D142FF48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD1887B-FEB4-4543-997F-E10776A5B3DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD1887B-FEB4-4543-997F-E10776A5B3DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD1887B-FEB4-4543-997F-E10776A5B3DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD1887B-FEB4-4543-997F-E10776A5B3DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
