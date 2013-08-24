@@ -127,9 +127,6 @@ namespace Builder
 
 
             return this;
-            //lastOr = lastOr.substring(0, lastOr.length - 1);
-            //self._literal[self._literal.length - 1] = lastOr;
-            //self._literal.push("|(?:" + or + "))");
         }
 
         private string StripParenthesis(string literal)
