@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace RegExpBuilderTests
 {
     [TestClass]
-    public class Class1
+    public class RegExpBuilderTests
     {
         [TestMethod]
         public void GetRegExp()
