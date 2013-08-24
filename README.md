@@ -1,7 +1,7 @@
 RegExpBuilder
 =============
 
-A library for building RegExpPattrerns
+A library for building RegExpPatterns
 ## What is it?
 A linq extensions style of building RegExpPatterns in .NET.
 
