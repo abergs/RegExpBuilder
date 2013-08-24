@@ -30,7 +30,7 @@ namespace Builder
             if (_state.MultiLine)
                 options = options | RegexOptions.Multiline;
 
-            return new Regex(this.ToString(),options);
+            return new Regex(this.ToString(), options);
         }
 
         public RegExpBuilder StartOfInput()
@@ -48,7 +48,7 @@ namespace Builder
         public RegExpBuilder StartOfLine()
         {
             _state.MultiLine = true;
-                StartOfInput();
+            StartOfInput();
             return this;
         }
 
@@ -109,20 +109,22 @@ namespace Builder
             return this;
         }
 
-        public RegExpBuilder Or() {
+        public RegExpBuilder Or()
+        {
             //OrLike(new RegExpBuilder().Exactly(1).Of(searchString).ToRegExp());
             _state.Or = true;
             return this;
         }
 
-        public RegExpBuilder OrLike(Regex RegExpression) {
+        public RegExpBuilder OrLike(Regex RegExpression)
+        {
             var literal = _expression.Last();
             _expression.Remove(_expression.Last());
 
-            //literal = StripParenthesis(literal);
+            literal = StripParenthesis(literal);
 
             _expression.Add(AddParenthesis(literal + "|(?:" + RegExpression.ToString() + ")"));
-            
+
 
             return this;
             //lastOr = lastOr.substring(0, lastOr.length - 1);
@@ -132,11 +134,17 @@ namespace Builder
 
         private string StripParenthesis(string literal)
         {
-            return literal.Trim('(', ')');
+            if (literal.StartsWith("("))
+                literal = literal.Remove(0, 1);
+            if (literal.EndsWith(")"))
+                literal = literal.Substring(0, literal.Length - 1);
+
+            return literal;
         }
 
-        private string AddParenthesis(string literal) {
-            if(literal.Length > 0)
+        private string AddParenthesis(string literal)
+        {
+            if (literal.Length > 0)
                 return "(" + literal + ")";
 
             return literal;
@@ -197,12 +205,14 @@ namespace Builder
             _literal = AddFilters(_literal);
             _literal = HandleConditions(_literal);
             _literal = AddParenthesis(_literal);
-            _expression.Add(_literal);
+            if (_literal.Length > 0)
+                _expression.Add(_literal);
         }
 
         private string HandleConditions(string _literal)
         {
-            if (_state.Or) {
+            if (_state.Or)
+            {
                 this.OrLike(new Regex(_literal));
                 _literal = "";
                 _state.Or = false;

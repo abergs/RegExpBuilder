@@ -220,5 +220,29 @@ namespace RegExpBuilderTests
             Assert.IsFalse(r.Match("ab").Success, "two Letters");
             Assert.IsFalse(r.Match("aa").Success, "two Letters");
         }
+
+        [TestMethod]
+        public void MultipleOr()
+        {
+
+            var builder = new Builder.RegExpBuilder();
+            var r = builder
+                .StartOfLine()
+                .Exactly(1)
+                .Of("a")
+                .Or()
+                .Exactly(1).Of("b")
+                .Or()
+                .MinimumOf(3).Of("x")
+                .EndOfLine()
+                .ToRegExp();
+
+            Assert.IsTrue(r.Match("a").Success, "a");
+            Assert.IsTrue(r.Match("b").Success, "b");
+            Assert.IsTrue(r.Match("xxxx").Success, "many x");
+
+            Assert.IsFalse(r.Match("ab").Success, "two Letters");
+            Assert.IsFalse(r.Match("aa").Success, "two Letters");
+        }
     }
 }
