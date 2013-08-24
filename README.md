@@ -7,7 +7,8 @@ A linq extensions style of building RegExpPatterns in .NET.
 
 ## Example
 Good code is simple.
-Which of these code snippets is easiest to understand?
+Which one of these snippets of code do you want to find in your code?
+
 `var regEx = {(?:^)[A-Za-z]([A-Za-z]+|(?:\d+))(@{1,1})[A-Za-z]+(.{1,1})[A-Za-z]+(?:$)}`
 
 *or*
