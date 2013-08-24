@@ -269,7 +269,8 @@ namespace RegExpBuilderTests
             Assert.IsTrue(r.Match("anders@andersaberg.com").Success);
             Assert.IsTrue(r.Match("a1@a.com").Success);
             
-            Assert.IsFalse(r.Match("1a@a.com").Success, "two Letters");
+            // Invalid
+            Assert.IsFalse(r.Match("1a@a.com").Success);
         }
     }
 }
