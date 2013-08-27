@@ -4,7 +4,7 @@ RegExpBuilder
 A library for building RegExpPatterns
 ## What is it?
 A linq extensions style of building RegExpPatterns in .NET.
-Related Blogpost: (I don't know Regex)[http://ideasof.andersaberg.com/idea/17/i-dont-know-regex]
+Related Blogpost: [I don't know Regex](http://ideasof.andersaberg.com/idea/17/i-dont-know-regex)
 
 ## Example
 **Good code is simple code.**  
