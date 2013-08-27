@@ -1,7 +1,7 @@
 RegExpBuilder
 =============
 
-A library for building RegExpPatterns
+A library for building RegExpPatterns. It is not available as a nuget package yet, because I would like to add some more features to it, before relasing a package. I'm not great at writing regex, so I would really appreciate any feedback if you have any.
 ## What is it?
 A linq extensions style of building RegExpPatterns in .NET.  
 Related Blogpost: [I don't know Regex](http://ideasof.andersaberg.com/idea/17/i-dont-know-regex)
