@@ -28,7 +28,7 @@ Which one of these snippets of code do you want to find in your code?
         .EndOfInput()
         .ToRegExp();
 
-#How to use it
+# How to use it
 
 ### Of("Github").Or().Of("BitBucket")		
             var builder = new Builder.RegExpBuilder();
@@ -78,5 +78,5 @@ Which one of these snippets of code do you want to find in your code?
             Assert.IsFalse(r.Match("aa").Success, "two Letters");
         }
 
-###There is alot more examples in the test files!
+### There is alot more examples in the test files!
 [RegExpBuilderTests.cs](https://github.com/abergs/RegExpBuilder/blob/master/RegExpBuilderTests/RegExpBuilderTests.cs)
